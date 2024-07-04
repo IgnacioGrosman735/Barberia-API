@@ -40,20 +40,20 @@ class Turno:
         return Turnos
 
     @staticmethod
-    def get_by_id(movie_id):
+    def get_by_id(id_turno):
         db = get_db()
         cursor = db.cursor()
-        cursor.execute("SELECT * FROM movies WHERE id_movie = %s", (movie_id,))
+        cursor.execute('SELECT * FROM "Turnos" WHERE id_turno = %s', (id_turno,))
         row = cursor.fetchone()
         cursor.close()
         if row:
-            return Turno(id_movie=row[0], title=row[1], director=row[2], release_date=row[3], banner=row[4])
+            return Turno(id_turno=row[0], nombre=row[1], apellido=row[2], telefono=row[3], email=row[4], dia=row[5])
         return None
 
     def delete(self):
         db = get_db()
         cursor = db.cursor()
-        cursor.execute("DELETE FROM movies WHERE id_movie = %s", (self.id_movie,))
+        cursor.execute('DELETE FROM "Turnos" WHERE id_turno = %s', (self.id_turno,))
         db.commit()
         cursor.close()
 

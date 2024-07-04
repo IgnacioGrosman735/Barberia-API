@@ -25,3 +25,10 @@ def create_turno():
 def get_all_turnos():
     turnos = Turno.get_all()
     return jsonify([turno.serialize() for turno in turnos])
+
+def get_turno_id(id_turno):
+    turnos = Turno.get_by_id(id_turno)
+    if not turnos:
+        return jsonify({'message':'No existe ese turno'}),404
+    return jsonify(turnos.serialize())
+

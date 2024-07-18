@@ -1,6 +1,7 @@
 from flask import jsonify, request
 #from app.database import get_db
 from app.models import Turno
+#from flask_cors import cross_origin
 
 """ def index():
     return jsonify({"mensaje": "Soy una api nuevita"}), 200
